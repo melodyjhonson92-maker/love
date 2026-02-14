@@ -1,115 +1,277 @@
+/* 
+    Project: Eternal Love for Sadia Khatun
+    Design System: Modern Glassmorphism & High-Energy Romantic
+    Lines: 150+ 
+*/
+
 :root {
     --primary-pink: #ff4d6d;
+    --secondary-pink: #ff758f;
     --deep-rose: #c9184a;
-    --glass: rgba(255, 255, 255, 0.85);
+    --soft-white: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --gold-glow: rgba(212, 175, 55, 0.3);
+    --transition-speed: 0.4s;
 }
 
+/* 1. Global Reset & Mobile Viewport Lock */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent; /* Fixes mobile flash on click */
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents accidental scrolling on mobile */
+    font-family: 'Montserrat', sans-serif;
+    background: #000; /* Fallback */
+}
+
+/* 2. Energetic Animated Background */
 body {
-    height: 100vh;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #ffafbd, #ffc3a0);
+    background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #ff758f, #ffafbd);
     background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden; /* Prevents scrolling */
-    padding: 20px;
+    animation: gradientShift 15s ease infinite;
 }
 
-@keyframes gradientBG {
+@keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-.glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    padding: 30px 20px;
-    width: 100%;
-    max-width: 380px; /* Perfect for mobile */
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+/* 3. Pre-loader Styles */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    transition: opacity 1s ease;
 }
 
-.image-wrap {
-    width: 160px;
-    height: 160px;
-    margin-bottom: 20px;
-    background: white;
-    border-radius: 20px;
-    padding: 5px;
-    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+.heart-pulse {
+    font-size: 80px;
+    animation: heartbeat 1.2s infinite;
 }
 
-.image-wrap img {
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.3); }
+    70% { transform: scale(1); }
+}
+
+/* 4. The Glassmorphism Experience Card */
+.experience-card {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    background: var(--soft-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 40px 30px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    z-index: 100;
+    transform: translateY(0);
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 5. Progress Bar Architecture */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 10%; /* Starts at 10% */
+    height: 100%;
+    background: var(--primary-pink);
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.progress-text {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-pink);
+    text-transform: uppercase;
+}
+
+/* 6. Visual Stage (GIF Container) */
+.visual-engine {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+    position: relative;
+    border-radius: 30px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.2);
+}
+
+.visual-engine img {
     width: 100%;
     height: 100%;
-    border-radius: 15px;
     object-fit: cover;
+    border-radius: 22px;
 }
 
+.glow-effect {
+    position: absolute;
+    inset: -5px;
+    border-radius: 35px;
+    background: linear-gradient(45deg, var(--primary-pink), transparent, var(--secondary-pink));
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: rotateGlow 4s linear infinite;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 7. Typography Design */
 h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.2rem;
-    color: var(--primary-pink);
-    margin-bottom: 10px;
+    font-size: 2.8rem;
+    color: var(--deep-rose);
+    margin-bottom: 15px;
 }
 
-p {
-    color: #555;
+.nickname-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--primary-pink);
+    color: white;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#dynamic-message {
     font-size: 1rem;
-    line-height: 1.4;
-    min-height: 60px; /* Prevents card jumping */
+    line-height: 1.6;
+    color: #444;
+    min-height: 80px;
 }
 
-span {
+#dynamic-message span {
     color: var(--primary-pink);
     font-weight: 600;
+    border-bottom: 2px dashed var(--primary-pink);
 }
 
-.button-box {
-    margin-top: 20px;
+/* 8. Energetic Button Interaction Engine */
+.btn-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
-    width: 100%;
-    height: 55px;
+    margin-top: 30px;
     position: relative;
+    min-height: 60px;
 }
 
-.btn {
-    padding: 12px 25px;
+.primary-btn {
+    padding: 16px 35px;
+    background: var(--primary-pink);
+    color: white;
     border: none;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.btn-yes {
-    background: var(--primary-pink);
-    color: white;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 10;
 }
 
-.btn-no {
-    background: #f0f0f0;
-    color: #999;
-    white-space: nowrap;
+.pulse {
+    animation: buttonPulse 2s infinite;
+}
+
+@keyframes buttonPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+}
+
+.secondary-btn {
+    padding: 14px 30px;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* 9. Mobile Responsiveness */
+@media (max-width: 480px) {
+    .experience-card {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .visual-engine {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* 10. Decorative Elements */
+.card-footer {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: #bbb;
+    letter-spacing: 1px;
+}
+
+.floating-hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart-item {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: floatHeart 6s linear infinite;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
