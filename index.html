@@ -3,218 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Queen, Sadia Khatun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --rose-red: #d00000;
-            --soft-blush: #fff0f3;
-            --gold-leaf: #af8d32;
-        }
-
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle, #ffafbd, #ffc3a0);
-            overflow: hidden;
-            display: flex; justify-content: center; align-items: center;
-        }
-
-        /* Falling Petals Effect */
-        .petal {
-            position: absolute; top: -10%;
-            background-color: #ff4d6d;
-            border-radius: 0 50% 0 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
-
-        /* Glassmorphism Card */
-        .main-container {
-            position: relative;
-            width: 90%; max-width: 500px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 40px;
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            z-index: 10;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            color: var(--rose-red);
-            font-size: 3.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .nickname {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--gold-leaf);
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-
-        .romantic-text {
-            font-size: 1.1rem;
-            color: #444;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .gif-display {
-            width: 200px; height: 200px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .gif-display img { width: 100%; height: 100%; object-fit: cover; }
-
-        .btn-wrap {
-            display: flex; justify-content: center; gap: 20px;
-            margin-top: 20px; height: 60px; position: relative;
-        }
-
-        .btn {
-            padding: 15px 40px; border: none; border-radius: 50px;
-            font-weight: 600; cursor: pointer; font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        #yesBtn {
-            background: linear-gradient(45deg, #ff4d6d, #d00000);
-            color: white; box-shadow: 0 10px 20px rgba(208, 0, 0, 0.3);
-        }
-
-        #noBtn {
-            background: white; color: #888;
-            position: absolute; right: 20%;
-        }
-
-        .hidden { display: none; opacity: 0; transform: scale(0.9); }
-        .visible { display: block; opacity: 1; transform: scale(1); animation: popIn 0.8s forwards; }
-
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Heartbeat */
-        .heart {
-            color: var(--rose-red);
-            display: inline-block;
-            animation: beat 1.2s infinite;
-        }
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-        }
-    </style>
+    <title>For My Sadia Khatun ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <div id="petal-container"></div>
+    <!-- Background Music (Romantic & Soft) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- STAGE 1: INTRO -->
-    <div id="stage1" class="main-container">
-        <div class="gif-display">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Cute Bird">
-        </div>
-        <h1>Sadia Khatun</h1>
-        <div class="nickname">My Tuntuni Pakhi</div>
-        <p class="romantic-text">Life without you is like a bird without wings. I have a journey prepared for us... are you ready to enter?</p>
-        <button onclick="nextStage(2)" id="yesBtn" class="btn">Enter Our World ❤️</button>
-    </div>
+    <div class="petals-container" id="petals"></div>
 
-    <!-- STAGE 2: THE QUESTIONS -->
-    <div id="stage2" class="main-container hidden">
-        <div class="gif-display">
-            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5uamZ4eXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps6shccXUv3Wv/giphy.gif">
-        </div>
-        <h1 id="questionTitle" style="font-size: 2.5rem;">One Question...</h1>
-        <p id="questionText" class="romantic-text">Will you be my Valentine and my Tuntuni Pakhi forever?</p>
-        <div class="btn-wrap">
-            <button id="yesBtn" class="btn" onclick="celebrate()">Yes, 1000 Times!</button>
-            <button id="noBtn" class="btn">No</button>
-        </div>
-    </div>
+    <main class="glass-card">
+        <!-- Section 1: The Entrance -->
+        <section id="step1" class="content-section">
+            <div class="image-wrap">
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWRzNm02N2d2bXQ5djl2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Birdie">
+            </div>
+            <h1>Hi Sadia...</h1>
+            <p>My beautiful <span>Tuntuni Pakhi</span>, I've built a small world just for us. Do you want to enter?</p>
+            <button class="btn main-btn" onclick="startExperience()">Open My Heart ❤️</button>
+        </section>
 
-    <!-- STAGE 3: THE CELEBRATION -->
-    <div id="stage3" class="main-container hidden">
-        <div class="gif-display">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26BRv0ThflsHCqfJA/giphy.gif">
-        </div>
-        <h1>I Knew It! ❤️</h1>
-        <p class="romantic-text">You are stuck with me forever, <b>Sadia</b>! I promise to love you, cherish you, and always bring you your favorite treats. Happy Valentine's Day, my beautiful Bird!</p>
-        <div class="heart" style="font-size: 50px;">❤️</div>
-    </div>
+        <!-- Section 2: The Question -->
+        <section id="step2" class="content-section hidden">
+            <div class="image-wrap">
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDRsdmJwczZzaGNjY3V2M3YmZXA9djFfaW5Rlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBps6shccXUv3Wv/giphy.gif" alt="Love Hearts">
+            </div>
+            <h2>Will you be my Valentine forever?</h2>
+            <p>There is only one right answer, Bird! 😉</p>
+            <div class="button-box">
+                <button class="btn main-btn" id="yesBtn" onclick="celebrate()">Yes, Forever! 💍</button>
+                <button class="btn alt-btn" id="noBtn">No 😜</button>
+            </div>
+        </section>
 
-    <script>
-        // Create falling petals
-        function createPetals() {
-            const container = document.getElementById('petal-container');
-            for (let i = 0; i < 30; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.width = Math.random() * 15 + 10 + 'px';
-                petal.style.height = petal.style.width;
-                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
-                petal.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(petal);
-            }
-        }
-        createPetals();
+        <!-- Section 3: The Celebration -->
+        <section id="step3" class="content-section hidden">
+            <div class="image-wrap">
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjZicnYwdGhmbHNoY3FqYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26BRv0ThflsHCqfJA/giphy.gif" alt="Celebrate">
+            </div>
+            <h1>Yay! I love you!</h1>
+            <p class="final-text">Every beat of my heart belongs to you, Sadia. You are my greatest blessing. Happy Valentine's Day!</p>
+            <div class="signature">Forever yours, [Your Name]</div>
+        </section>
+    </main>
 
-        function nextStage(num) {
-            document.querySelectorAll('.main-container').forEach(c => c.classList.add('hidden'));
-            document.getElementById('stage' + num).classList.remove('hidden');
-            document.getElementById('stage' + num).classList.add('visible');
-        }
-
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        let noCount = 0;
-
-        const avoidPhrases = ["Are you sure?", "Paree na!", "Think again!", "Sadia, stop!", "Wrong Button!", "I'm running!", "Try the red one!"];
-
-        function moveNo() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            
-            // Randomly change "No" text to be funny
-            noBtn.innerText = avoidPhrases[Math.floor(Math.random() * avoidPhrases.length)];
-            
-            // Make "Yes" button grow every time she tries to hit "No"
-            let currentScale = yesBtn.style.transform.replace('scale(', '').replace(')', '') || 1;
-            yesBtn.style.transform = `scale(${parseFloat(currentScale) + 0.15})`;
-        }
-
-        noBtn.addEventListener('mouseover', moveNo);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
-
-        function celebrate() {
-            nextStage(3);
-            // Extra confetti logic could go here
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
