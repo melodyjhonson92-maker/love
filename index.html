@@ -4,55 +4,244 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Sadia Khatun ❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Fonts & Libraries -->
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --soft: #ffccd5;
+            --text: #4a4a4a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Floating Hearts Background */
+        .heart-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* The Main Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .nickname {
+            font-weight: 600;
+            color: #d63384;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .img-container {
+            width: 140px; height: 140px;
+            margin: 0 auto 20px;
+            background: #fff;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .img-container img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-yes {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn-no {
+            background: #eee;
+            color: #888;
+        }
+
+        .hidden { display: none; }
+
+        /* Animation for No button */
+        #noBtn { position: relative; }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Background Music (Romantic & Soft) -->
-    <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
+    <div class="heart-bg" id="heartBg"></div>
 
-    <div class="petals-container" id="petals"></div>
+    <!-- Screen 1: Start -->
+    <div id="step1" class="glass-card fade-in">
+        <div class="img-container">
+            <!-- Stable bird GIF -->
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Bird">
+        </div>
+        <h1>Hi Sadia Khatun!</h1>
+        <span class="nickname">My Tuntuni Pakhi ❤️</span>
+        <p>I built a little world for us. Ready to see it?</p>
+        <button class="btn btn-yes" onclick="showStep2()">Open My Heart</button>
+    </div>
 
-    <main class="glass-card">
-        <!-- Section 1: The Entrance -->
-        <section id="step1" class="content-section">
-            <div class="image-wrap">
-                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWRzNm02N2d2bXQ5djl2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Birdie">
-            </div>
-            <h1>Hi Sadia...</h1>
-            <p>My beautiful <span>Tuntuni Pakhi</span>, I've built a small world just for us. Do you want to enter?</p>
-            <button class="btn main-btn" onclick="startExperience()">Open My Heart ❤️</button>
-        </section>
+    <!-- Screen 2: Question -->
+    <div id="step2" class="glass-card hidden">
+        <div class="img-container">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5uamZ4eXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps6shccXUv3Wv/giphy.gif" alt="Love">
+        </div>
+        <h2>Will you be my Valentine forever?</h2>
+        <div style="height: 100px; position: relative; display: flex; justify-content: center; align-items: center;">
+            <button id="yesBtn" class="btn btn-yes" onclick="celebrate()">YES! 💖</button>
+            <button id="noBtn" class="btn btn-no">No 😜</button>
+        </div>
+    </div>
 
-        <!-- Section 2: The Question -->
-        <section id="step2" class="content-section hidden">
-            <div class="image-wrap">
-                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDRsdmJwczZzaGNjY3V2M3YmZXA9djFfaW5Rlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBps6shccXUv3Wv/giphy.gif" alt="Love Hearts">
-            </div>
-            <h2>Will you be my Valentine forever?</h2>
-            <p>There is only one right answer, Bird! 😉</p>
-            <div class="button-box">
-                <button class="btn main-btn" id="yesBtn" onclick="celebrate()">Yes, Forever! 💍</button>
-                <button class="btn alt-btn" id="noBtn">No 😜</button>
-            </div>
-        </section>
+    <!-- Screen 3: Celebration -->
+    <div id="step3" class="glass-card hidden">
+        <div class="img-container">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26BRv0ThflsHCqfJA/giphy.gif" alt="Celebrate">
+        </div>
+        <h1>I Love You!</h1>
+        <p>You are my favorite bird in the whole world. Happy Valentine's Day!</p>
+        <p style="font-family: 'Dancing Script'; font-size: 1.5rem; color: #ff4d6d;">Forever Yours.</p>
+    </div>
 
-        <!-- Section 3: The Celebration -->
-        <section id="step3" class="content-section hidden">
-            <div class="image-wrap">
-                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjZicnYwdGhmbHNoY3FqYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26BRv0ThflsHCqfJA/giphy.gif" alt="Celebrate">
-            </div>
-            <h1>Yay! I love you!</h1>
-            <p class="final-text">Every beat of my heart belongs to you, Sadia. You are my greatest blessing. Happy Valentine's Day!</p>
-            <div class="signature">Forever yours, [Your Name]</div>
-        </section>
-    </main>
+    <script>
+        // 1. Floating Hearts Logic
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '110vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.opacity = Math.random();
+            heart.style.transition = 'transform 5s linear, opacity 5s';
+            document.getElementById('heartBg').appendChild(heart);
 
-    <script src="script.js"></script>
+            setTimeout(() => {
+                heart.style.transform = `translateY(-120vh) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
+
+        // 2. Navigation
+        function showStep2() {
+            document.getElementById('step1').classList.add('hidden');
+            const s2 = document.getElementById('step2');
+            s2.classList.remove('hidden');
+            s2.classList.add('fade-in');
+        }
+
+        // 3. Moving Button Logic
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            // Make YES button grow!
+            let currentScale = parseFloat(yesBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
+            yesBtn.style.transform = `scale(${currentScale + 0.15})`;
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // 4. Final Celebration
+        function celebrate() {
+            document.getElementById('step2').classList.add('hidden');
+            const s3 = document.getElementById('step3');
+            s3.classList.remove('hidden');
+            s3.classList.add('fade-in');
+
+            // Confetti Cannon!
+            var end = Date.now() + (3 * 1000);
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ff4d6d', '#ffccd5']
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ff4d6d', '#ffccd5']
+                });
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
 </body>
 </html>
