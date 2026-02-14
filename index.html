@@ -1,115 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- 
-    Project: Eternal Love for Sadia Khatun
-    Version: 4.0 (Super Advanced Designer Edition)
-    Author: Professional Romantic Designer
-    Description: A 10-step interactive journey for Tuntuni Pakhi.
+    ================================================================
+    Project: The Eternal Flight of Tuntuni Pakhi
+    Dedicated to: Sadia Khatun
+    Designed by: Supper Romantic AI Designer
+    ================================================================
+    This code is engineered to be mobile-first, high-energy, and 
+    playful. It uses a 10-step story architecture.
 -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- Critical Mobile Compatibility Tags -->
+    <!-- MOBILE COMPATIBILITY: Force perfect fit on all phones -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#ff4d6d">
-    
-    <title>For My Queen, Sadia Khatun ❤️</title>
 
-    <!-- Professional Font Architectures -->
+    <title>For My Sadia Khatun | Tuntuni Pakhi ❤️</title>
+
+    <!-- ROMANTIC TYPOGRAPHY -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 
-    <!-- External Animation & Interaction Libraries -->
+    <!-- EXTERNAL ENGINES -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- INTERNAL STYLESHEET LINK -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- [ADVANCED LAYER 1: The Heart Particle Canvas] -->
-    <div id="particle-container"></div>
+    <!-- ADVANCED LAYER: Background Particles -->
+    <div id="particle-field" class="particles"></div>
 
-    <!-- [ADVANCED LAYER 2: The Animated Background Gradient] -->
-    <div class="gradient-overlay"></div>
+    <!-- ADVANCED LAYER: Animated Gradient Overlay -->
+    <div class="background-glow"></div>
 
-    <!-- [ADVANCED LAYER 3: Interactive Pre-loader] -->
-    <div id="loader">
-        <div class="heart-pulse">❤️</div>
-        <p>Pre-loading Love for Sadia...</p>
+    <!-- PRE-LOADER: Ensuring Sadia doesn't see a blank screen -->
+    <div id="global-loader">
+        <div class="loader-content">
+            <div class="heart-animation">❤️</div>
+            <p>Creating Magic for Sadia...</p>
+            <div class="loading-bar-container">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
     </div>
 
-    <!-- [ADVANCED LAYER 4: The Main Experience Card] -->
-    <main class="experience-card" id="main-stage">
+    <!-- MAIN EXPERIENCE CONTAINER -->
+    <main class="master-container" id="experience-card">
         
-        <!-- Progress Indicator for the 10-Step Journey -->
-        <div class="progress-container">
-            <div class="progress-bar" id="love-progress"></div>
-            <span class="progress-text">Step <span id="step-count">1</span> of 10</span>
-        </div>
+        <!-- TOP INDICATOR: The 10-Step Progress -->
+        <header class="experience-header">
+            <div class="progress-wrapper">
+                <div class="progress-track">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="step-label">
+                    Step <span id="current-step-num">1</span> of 10
+                </div>
+            </div>
+            <div class="bird-icons">
+                <span class="bird-left">🐦</span>
+                <span class="bird-right">🌸</span>
+            </div>
+        </header>
 
-        <!-- Decorative SVG Birds (Left & Right) -->
-        <div class="bird-decor bird-left">
-            <svg viewBox="0 0 24 24" class="svg-bird"><path fill="#ff4d6d" d="M21 5c-1.11 0-2.06.67-2.45 1.63C17.42 5.63 15.82 5 14 5c-3.31 0-6 2.69-6 6c0 1.05.27 2.04.75 2.91L3 19l1.41 1.41L10.33 14.5c.52.32 1.1.5 1.67.5 3.31 0 6-2.69 6-6 0-1.05-.28-2.03-.76-2.9l4.58-4.58L21 5z"/></svg>
-        </div>
+        <!-- VISUAL ENGINE: The Heart of the App (GIF Display) -->
+        <section class="visual-engine">
+            <div class="frame-border">
+                <div class="glow-ring"></div>
+                <img id="main-display-gif" src="assets/1.gif" alt="For My Sadia">
+            </div>
+        </section>
 
-        <!-- Central Image/GIF Stage -->
-        <div class="visual-engine">
-            <div class="glow-effect"></div>
-            <img id="dynamic-gif" src="assets/1.gif" alt="Romantic Experience">
-        </div>
+        <!-- TEXT ENGINE: Romantic Narrative -->
+        <section class="text-engine">
+            <div class="title-wrap">
+                <h1 id="dynamic-title" class="animate-text">Hi Sadia Khatun!</h1>
+            </div>
+            <div class="badge-wrap">
+                <span class="romantic-badge">My Favorite Tuntuni Pakhi</span>
+            </div>
+            <div class="message-wrap">
+                <p id="dynamic-message" class="animate-message">
+                    My beautiful Bird, you are the most precious person in my life. 
+                    I've prepared a <span>10-step journey</span> to show you how much I love you.
+                </p>
+            </div>
+        </section>
 
-        <!-- Content Engine: Dynamic Titles and Messages -->
-        <div class="content-engine">
-            <h1 id="dynamic-title" class="title-animation">Hi Sadia Khatun!</h1>
-            <div class="nickname-badge">My Tuntuni Pakhi</div>
-            <p id="dynamic-message">
-                Every bird needs its wings, and I need you. I've built a 
-                <span>10-step journey</span> of my heart just for you. 
-                Ready to fly with me?
-            </p>
-        </div>
-
-        <!-- Interaction Engine: Energetic and Playful Buttons -->
-        <div class="interaction-engine" id="control-panel">
-            <div class="btn-wrapper">
-                <button id="yesBtn" class="primary-btn pulse" onclick="handleNavigation('yes')">
-                    Let's Begin ❤️
+        <!-- INTERACTION ENGINE: Energetic Buttons -->
+        <footer class="interaction-engine">
+            <div class="btn-container" id="action-buttons">
+                <!-- PRIMARY ACTION -->
+                <button id="mainBtn" class="btn btn-primary btn-pulse" onclick="engine.nextStep()">
+                    Start Our Journey ❤️
                 </button>
-                <button id="noBtn" class="secondary-btn" onmouseover="playfulEscape()" ontouchstart="playfulEscape()">
+                
+                <!-- SECONDARY PLAYFUL ACTION (Hidden until the question) -->
+                <button id="escapeBtn" class="btn btn-secondary btn-escape" 
+                        onmouseover="engine.runAway()" 
+                        ontouchstart="engine.runAway()">
                     No 😜
                 </button>
             </div>
-        </div>
+        </footer>
 
-        <!-- Hidden Audio Element (Can be toggled in JS) -->
-        <audio id="romantic-bgm" loop>
-            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-        </audio>
-
-        <!-- Signature Branding -->
-        <div class="card-footer">
-            Built with ❤️ for Sadia Khatun
+        <!-- CARD FOOTER -->
+        <div class="card-footer-branding">
+            <p>Designed with Forever Love for Sadia</p>
         </div>
     </main>
 
-    <!-- [ADVANCED LAYER 5: Decorative Floating Hearts] -->
-    <div class="floating-hearts">
-        <span class="heart-item">💖</span>
-        <span class="heart-item">🌸</span>
-        <span class="heart-item">✨</span>
-        <span class="heart-item">🐦</span>
-    </div>
+    <!-- AUDIO ENGINE (Hidden) -->
+    <audio id="romantic-audio" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- Link to the Advanced Script Logic -->
+    <!-- SCRIPT INJECTION -->
     <script src="script.js"></script>
 
     <!-- 
-        STYLING NOTES:
-        - The code is structured to prevent any "Content Not Available" issues.
-        - Mobile gesture support is baked into the ontouchstart events.
-        - The 100-line requirement is met through detailed semantic structuring.
+        MOBILE FIX: 
+        Ensures the "Open" button area is always clickable 
+        by preventing browser default zoom-on-tap behaviors.
     -->
+    <script>
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) { event.preventDefault(); }
+        }, { passive: false });
+    </script>
+
 </body>
 </html>
