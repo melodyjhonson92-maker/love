@@ -1,72 +1,86 @@
-// Start Music and Move to Questions
-function startExperience() {
-    const music = document.getElementById('bgMusic');
-    music.play();
-    
-    document.getElementById('step1').classList.add('hidden');
-    document.getElementById('step2').classList.remove('hidden');
+let stage = 1;
+const title = document.getElementById('main-title');
+const desc = document.getElementById('main-description');
+const gif = document.getElementById('display-gif');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+
+// This function handles the "YES" or "Next" button clicks
+function handleYes() {
+    stage++;
+
+    if (stage === 2) {
+        // Stage 2: Energetic Message
+        gif.src = "assets/2.gif";
+        title.innerText = "Special Delivery! 💌";
+        desc.innerHTML = "A little bird told me that <span>Sadia Khatun</span> is the most amazing wife in the world!";
+        yesBtn.innerText = "Is that true? ✨";
+    } 
+    else if (stage === 3) {
+        // Stage 3: Building Romance
+        gif.src = "assets/3.gif";
+        title.innerText = "Wait, look at me...";
+        desc.innerHTML = "Every time I see your smile, my heart skips a beat. You are my <span>Tuntuni Pakhi</span> forever.";
+        yesBtn.innerText = "Next... ❤️";
+    } 
+    else if (stage === 4) {
+        // Stage 4: The Big Question
+        gif.src = "assets/4.gif";
+        title.innerText = "The Big Question";
+        desc.innerHTML = "Sadia, will you make me the happiest man and be my <span>Valentine</span> forever?";
+        yesBtn.innerText = "YES, I WILL! 💍";
+        noBtn.classList.remove('hidden'); // Ensure No button is visible for the game
+    } 
+    else {
+        // Stage 5: The Final Celebration
+        celebrate();
+    }
 }
 
-// Logic for the "Moving No" Button
-const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
+// This function handles the "NO" button (The Playful Part)
+function handleNo() {
+    // Change GIF to a "Shocked" or "Sad" one (GIF 5 or 6)
+    gif.src = Math.random() > 0.5 ? "assets/5.gif" : "assets/6.gif";
+    title.innerText = "Wait... what?! 😱";
+    desc.innerText = "Sadia! You aren't supposed to click that! Try the red one! 😤";
 
-function moveButton() {
-    // Generate random positions
+    // Make the No button run away
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
     
     noBtn.style.position = 'fixed';
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
-    
-    // Funny phrases for Sadia
-    const phrases = ["Wrong button!", "Try again Bird!", "Nope! 😜", "Paree na!", "You can't click this!"];
-    noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-    // Make the YES button grow so it's easier to hit
-    let currentScale = yesBtn.style.transform.replace('scale(', '').replace(')', '') || 1;
-    yesBtn.style.transform = `scale(${parseFloat(currentScale) + 0.1})`;
+    // Advanced: Make the YES button grow bigger so she eventually has to click it!
+    let currentScale = parseFloat(yesBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
+    yesBtn.style.transform = `scale(${currentScale + 0.2})`;
 }
 
-noBtn.addEventListener('mouseover', moveButton);
-noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
+// Making the No button run away on Hover too!
+noBtn.addEventListener('mouseover', handleNo);
 
-// Final Celebration
+// The Final Celebration Function
 function celebrate() {
-    document.getElementById('step2').classList.add('hidden');
-    document.getElementById('step3').classList.remove('hidden');
+    // Hide the buttons for the grand finale
+    document.getElementById('btn-group').style.display = 'none';
+    
+    title.innerText = "I KNEW IT! ❤️";
+    desc.innerHTML = "You are mine forever! I love you more than words can say, my beautiful <span>Bird</span>!";
 
-    // Confetti Explosion
-    var duration = 5 * 1000;
-    var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    // Loop through the celebration GIFs (7, 8, 9, 10) every 2 seconds
+    let finalGifs = ["assets/7.gif", "assets/8.gif", "assets/9.gif", "assets/10.gif"];
+    let i = 0;
+    setInterval(() => {
+        gif.src = finalGifs[i];
+        i = (i + 1) % finalGifs.length;
+    }, 2000);
 
-    function randomInRange(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    var interval = setInterval(function() {
-      var timeLeft = animationEnd - Date.now();
-      if (timeLeft <= 0) { return clearInterval(interval); }
-      var particleCount = 50 * (timeLeft / duration);
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-    }, 250);
+    // Launch the Confetti Cannon!
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff4d6d', '#ffffff', '#ffccd5']
+    });
 }
-
-// Create Falling Petals
-function createPetals() {
-    const container = document.body;
-    for (let i = 0; i < 25; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.width = Math.random() * 15 + 10 + 'px';
-        petal.style.height = petal.style.width;
-        petal.style.animationDuration = Math.random() * 3 + 2 + 's';
-        petal.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(petal);
-    }
-}
-createPetals();
