@@ -3,240 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sadia Khatun ❤️</title>
+    <title>For Sadia Khatun | Tuntuni Pakhi</title>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Professional Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    
     <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
         :root {
-            --primary: #ff4d6d;
-            --soft: #ffccd5;
-            --text: #4a4a4a;
+            --primary-pink: #ff4d6d;
+            --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #fecdd3 100%);
         }
 
-        * { box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            font-family: 'Poppins', sans-serif;
             overflow: hidden;
-            text-align: center;
+            color: #444;
         }
 
         /* Floating Hearts Background */
-        .heart-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+        .heart-float {
+            position: absolute;
+            color: var(--primary-pink);
+            opacity: 0.2;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
+            animation: floatUp 6s linear infinite;
         }
 
-        /* The Main Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 30px;
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Main Card */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(255, 77, 109, 0.2);
             width: 90%;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 450px;
+            text-align: center;
             position: relative;
+            z-index: 10;
+            border: 2px solid #fff;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin: 10px 0;
+            font-size: 3rem;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
         }
 
         .nickname {
+            font-size: 1.2rem;
             font-weight: 600;
+            letter-spacing: 2px;
             color: #d63384;
+            text-transform: uppercase;
+            margin-bottom: 25px;
             display: block;
-            margin-bottom: 15px;
         }
 
-        .img-container {
-            width: 140px; height: 140px;
+        /* The Bird SVG (This will ALWAYS show, no errors) */
+        .bird-icon {
+            width: 120px;
+            height: 120px;
             margin: 0 auto 20px;
-            background: #fff;
-            border-radius: 50%;
-            padding: 5px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            animation: wiggle 2s ease-in-out infinite;
         }
 
-        .img-container img {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            min-height: 120px;
+            position: relative;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 16px 40px;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 100px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
-            margin: 10px;
-            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .btn-yes {
-            background: var(--primary);
+            background: var(--primary-pink);
             color: white;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+            z-index: 100;
         }
 
         .btn-no {
-            background: #eee;
-            color: #888;
+            background: #f1f5f9;
+            color: #94a3b8;
+            position: relative;
         }
 
         .hidden { display: none; }
 
-        /* Animation for No button */
-        #noBtn { position: relative; }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        #step3 h2 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary-pink); }
     </style>
 </head>
 <body>
 
-    <div class="heart-bg" id="heartBg"></div>
+    <div id="hearts-bg"></div>
 
-    <!-- Screen 1: Start -->
-    <div id="step1" class="glass-card fade-in">
-        <div class="img-container">
-            <!-- Stable bird GIF -->
-            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Bird">
+    <!-- STEP 1 -->
+    <div id="step1" class="container">
+        <!-- SVG Bird (Safe and Bulletproof) -->
+        <div class="bird-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#FFCCD5"/><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#FF4D6D"/><path d="M11 11H13M11 13H13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <h1>Hi Sadia Khatun!</h1>
-        <span class="nickname">My Tuntuni Pakhi ❤️</span>
-        <p>I built a little world for us. Ready to see it?</p>
-        <button class="btn btn-yes" onclick="showStep2()">Open My Heart</button>
+        <h1>Sadia Khatun</h1>
+        <span class="nickname">My Tuntuni Pakhi 🐦</span>
+        <p class="message">You make my world fly higher. I have a secret to tell you... want to hear it?</p>
+        <button class="btn btn-yes" onclick="showStep(2)">Yes, tell me! ❤️</button>
     </div>
 
-    <!-- Screen 2: Question -->
-    <div id="step2" class="glass-card hidden">
-        <div class="img-container">
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5uamZ4eXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps6shccXUv3Wv/giphy.gif" alt="Love">
-        </div>
-        <h2>Will you be my Valentine forever?</h2>
-        <div style="height: 100px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <button id="yesBtn" class="btn btn-yes" onclick="celebrate()">YES! 💖</button>
+    <!-- STEP 2 -->
+    <div id="step2" class="container hidden">
+        <h1>Sadia...</h1>
+        <p class="message" id="questionText">Will you be my Valentine forever and always?</p>
+        <div class="btn-group" id="btnGroup">
+            <button id="yesBtn" class="btn btn-yes" onclick="celebrate()">Yes, Forever! 💍</button>
             <button id="noBtn" class="btn btn-no">No 😜</button>
         </div>
     </div>
 
-    <!-- Screen 3: Celebration -->
-    <div id="step3" class="glass-card hidden">
-        <div class="img-container">
-            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26BRv0ThflsHCqfJA/giphy.gif" alt="Celebrate">
+    <!-- STEP 3 -->
+    <div id="step3" class="container hidden">
+        <h2>I Love You, Bird!</h2>
+        <div class="bird-icon" style="animation: wiggle 0.5s infinite;">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#FFCCD5"/><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#FF4D6D"/></svg>
         </div>
-        <h1>I Love You!</h1>
-        <p>You are my favorite bird in the whole world. Happy Valentine's Day!</p>
-        <p style="font-family: 'Dancing Script'; font-size: 1.5rem; color: #ff4d6d;">Forever Yours.</p>
+        <p class="message">You are the most beautiful person in my life. Every beat of my heart is for you. Happy Valentine's Day, my Tuntuni Pakhi!</p>
+        <p style="font-weight: 600; color: var(--primary-pink);">Forever Yours.</p>
     </div>
 
     <script>
-        // 1. Floating Hearts Logic
-        function createHeart() {
+        // 1. Create Floating Hearts
+        const heartsContainer = document.getElementById('hearts-bg');
+        function createFloatingHeart() {
             const heart = document.createElement('div');
+            heart.className = 'heart-float';
             heart.innerHTML = '❤️';
-            heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '110vh';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            heart.style.opacity = Math.random();
-            heart.style.transition = 'transform 5s linear, opacity 5s';
-            document.getElementById('heartBg').appendChild(heart);
-
-            setTimeout(() => {
-                heart.style.transform = `translateY(-120vh) rotate(${Math.random() * 360}deg)`;
-                heart.style.opacity = '0';
-            }, 100);
-
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heartsContainer.appendChild(heart);
             setTimeout(() => heart.remove(), 6000);
         }
-        setInterval(createHeart, 300);
+        setInterval(createFloatingHeart, 400);
 
         // 2. Navigation
-        function showStep2() {
-            document.getElementById('step1').classList.add('hidden');
-            const s2 = document.getElementById('step2');
-            s2.classList.remove('hidden');
-            s2.classList.add('fade-in');
+        function showStep(step) {
+            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+            document.getElementById('step' + step).classList.remove('hidden');
         }
 
-        // 3. Moving Button Logic
+        // 3. The Escape Logic for "No" Button
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
+        const qText = document.getElementById('questionText');
+        let noClicks = 0;
 
-        function moveButton() {
+        function moveNo() {
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             
-            // Make YES button grow!
-            let currentScale = parseFloat(yesBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
-            yesBtn.style.transform = `scale(${currentScale + 0.15})`;
+            noClicks++;
+            if(noClicks > 2) {
+                let currentScale = parseFloat(yesBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
+                yesBtn.style.transform = `scale(${currentScale + 0.2})`;
+                qText.innerText = "You can't escape my love, Sadia! Click YES! 😉";
+            }
         }
 
-        noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moveButton();
-        });
+        noBtn.addEventListener('mouseover', moveNo);
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
 
-        // 4. Final Celebration
+        // 4. Celebration Logic
         function celebrate() {
-            document.getElementById('step2').classList.add('hidden');
-            const s3 = document.getElementById('step3');
-            s3.classList.remove('hidden');
-            s3.classList.add('fade-in');
+            showStep(3);
+            
+            // Professional Confetti Explosion
+            var end = Date.now() + (5 * 1000);
+            var colors = ['#ff4d6d', '#ffffff', '#ffccd5'];
 
-            // Confetti Cannon!
-            var end = Date.now() + (3 * 1000);
             (function frame() {
                 confetti({
-                    particleCount: 3,
+                    particleCount: 4,
                     angle: 60,
                     spread: 55,
                     origin: { x: 0 },
-                    colors: ['#ff4d6d', '#ffccd5']
+                    colors: colors
                 });
                 confetti({
-                    particleCount: 3,
+                    particleCount: 4,
                     angle: 120,
                     spread: 55,
                     origin: { x: 1 },
-                    colors: ['#ff4d6d', '#ffccd5']
+                    colors: colors
                 });
+
                 if (Date.now() < end) {
                     requestAnimationFrame(frame);
                 }
