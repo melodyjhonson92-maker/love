@@ -3,224 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sadia Khatun</title>
-    <!-- Importing Romantic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>For My Queen, Sadia Khatun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #ff4d6d;
-            --soft-pink: #ffccd5;
-            --gold: #d4af37;
+            --rose-red: #d00000;
+            --soft-blush: #fff0f3;
+            --gold-leaf: #af8d32;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
             font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle, #ffafbd, #ffc3a0);
             overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        /* Floating Hearts Animation */
-        .heart {
-            position: absolute;
-            color: rgba(255, 77, 109, 0.3);
-            font-size: 20px;
-            animation: float 6s linear infinite;
-            z-index: 0;
+        /* Falling Petals Effect */
+        .petal {
+            position: absolute; top: -10%;
+            background-color: #ff4d6d;
+            border-radius: 0 50% 0 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        /* Glassmorphism Card */
+        .main-container {
+            position: relative;
+            width: 90%; max-width: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            padding: 50px 30px;
             text-align: center;
-            max-width: 450px;
-            width: 90%;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             z-index: 10;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            color: var(--primary-pink);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-family: 'Great Vibes', cursive;
+            color: var(--rose-red);
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
-        p {
-            color: #555;
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-
-        .gif-box img {
-            width: 180px;
-            border-radius: 20px;
+        .nickname {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold-leaf);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            position: relative;
-            height: 60px;
+        .romantic-text {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
 
-        button {
-            padding: 12px 35px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-family: 'Poppins', sans-serif;
+        .gif-display {
+            width: 200px; height: 200px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .gif-display img { width: 100%; height: 100%; object-fit: cover; }
+
+        .btn-wrap {
+            display: flex; justify-content: center; gap: 20px;
+            margin-top: 20px; height: 60px; position: relative;
+        }
+
+        .btn {
+            padding: 15px 40px; border: none; border-radius: 50px;
+            font-weight: 600; cursor: pointer; font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         #yesBtn {
-            background: var(--primary-pink);
-            color: white;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff4d6d, #d00000);
+            color: white; box-shadow: 0 10px 20px rgba(208, 0, 0, 0.3);
         }
 
         #noBtn {
-            background: #eee;
-            color: #888;
-            position: absolute;
+            background: white; color: #888;
+            position: absolute; right: 20%;
         }
 
-        .hidden { display: none; }
+        .hidden { display: none; opacity: 0; transform: scale(0.9); }
+        .visible { display: block; opacity: 1; transform: scale(1); animation: popIn 0.8s forwards; }
 
-        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Heartbeat */
+        .heart {
+            color: var(--rose-red);
+            display: inline-block;
+            animation: beat 1.2s infinite;
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Hearts Background -->
-    <div id="heart-container"></div>
+    <div id="petal-container"></div>
 
-    <!-- Screen 1: The Greeting -->
-    <div id="screen1" class="card fade-in">
-        <div class="gif-box">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Bird">
+    <!-- STAGE 1: INTRO -->
+    <div id="stage1" class="main-container">
+        <div class="gif-display">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/mdS6m67GvMT9W9vH9S/giphy.gif" alt="Cute Bird">
         </div>
-        <h1>My Sadia Khatun...</h1>
-        <p>You are my beautiful <b>Tuntuni Pakhi</b>. I have some very important questions for you. Are you ready to answer with your heart?</p>
-        <button id="startBtn" style="background: #ff4d6d; color: white;">Yes, My Love ❤️</button>
+        <h1>Sadia Khatun</h1>
+        <div class="nickname">My Tuntuni Pakhi</div>
+        <p class="romantic-text">Life without you is like a bird without wings. I have a journey prepared for us... are you ready to enter?</p>
+        <button onclick="nextStage(2)" id="yesBtn" class="btn">Enter Our World ❤️</button>
     </div>
 
-    <!-- Screen 2: The Questions -->
-    <div id="screen2" class="card hidden">
-        <div class="gif-box">
-            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5uamZ4eXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps6shccXUv3Wv/giphy.gif" alt="Love">
+    <!-- STAGE 2: THE QUESTIONS -->
+    <div id="stage2" class="main-container hidden">
+        <div class="gif-display">
+            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5uamZ4eXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBps6shccXUv3Wv/giphy.gif">
         </div>
-        <h1 id="questionTitle">Will you be my Valentine?</h1>
-        <p id="questionDesc">I promise to always keep you happy.</p>
-        <div class="btn-group">
-            <button id="yesBtn">Yes! 💖</button>
-            <button id="noBtn">No 😜</button>
+        <h1 id="questionTitle" style="font-size: 2.5rem;">One Question...</h1>
+        <p id="questionText" class="romantic-text">Will you be my Valentine and my Tuntuni Pakhi forever?</p>
+        <div class="btn-wrap">
+            <button id="yesBtn" class="btn" onclick="celebrate()">Yes, 1000 Times!</button>
+            <button id="noBtn" class="btn">No</button>
         </div>
     </div>
 
-    <!-- Screen 3: The Final Love Letter -->
-    <div id="screen3" class="card hidden">
-        <div class="gif-box">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26BRv0ThflsHCqfJA/giphy.gif" alt="Love">
+    <!-- STAGE 3: THE CELEBRATION -->
+    <div id="stage3" class="main-container hidden">
+        <div class="gif-display">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHFhZzR3bmZ3Z3R4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26BRv0ThflsHCqfJA/giphy.gif">
         </div>
-        <h1>I Love You, Sadia!</h1>
-        <p>Every beat of my heart is for you. Thank you for being my <b>Bird</b>, my partner, and my everything. Happy Valentine's Day!</p>
-        <p style="font-family: 'Dancing Script'; font-size: 1.5rem; color: #ff4d6d;">Forever Yours.</p>
+        <h1>I Knew It! ❤️</h1>
+        <p class="romantic-text">You are stuck with me forever, <b>Sadia</b>! I promise to love you, cherish you, and always bring you your favorite treats. Happy Valentine's Day, my beautiful Bird!</p>
+        <div class="heart" style="font-size: 50px;">❤️</div>
     </div>
 
     <script>
-        // Create Floating Hearts
-        function createHearts() {
-            const container = document.getElementById('heart-container');
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                container.appendChild(heart);
+        // Create falling petals
+        function createPetals() {
+            const container = document.getElementById('petal-container');
+            for (let i = 0; i < 30; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.width = Math.random() * 15 + 10 + 'px';
+                petal.style.height = petal.style.width;
+                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(petal);
             }
         }
-        createHearts();
+        createPetals();
 
-        const s1 = document.getElementById('screen1');
-        const s2 = document.getElementById('screen2');
-        const s3 = document.getElementById('screen3');
-        const startBtn = document.getElementById('startBtn');
-        const yesBtn = document.getElementById('yesBtn');
+        function nextStage(num) {
+            document.querySelectorAll('.main-container').forEach(c => c.classList.add('hidden'));
+            document.getElementById('stage' + num).classList.remove('hidden');
+            document.getElementById('stage' + num).classList.add('visible');
+        }
+
         const noBtn = document.getElementById('noBtn');
-        const qTitle = document.getElementById('questionTitle');
-        const qDesc = document.getElementById('questionDesc');
+        const yesBtn = document.getElementById('yesBtn');
+        let noCount = 0;
 
-        let phase = 0;
+        const avoidPhrases = ["Are you sure?", "Paree na!", "Think again!", "Sadia, stop!", "Wrong Button!", "I'm running!", "Try the red one!"];
 
-        startBtn.addEventListener('click', () => {
-            s1.classList.add('hidden');
-            s2.classList.remove('hidden');
-            s2.classList.add('fade-in');
-        });
-
-        // The "No" button escape logic
         function moveNo() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             
-            // Playfully change text
-            const phrases = ["Wrong choice!", "Try again!", "You can't click this!", "Are you sure?", "Paree na!"];
-            noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            // Randomly change "No" text to be funny
+            noBtn.innerText = avoidPhrases[Math.floor(Math.random() * avoidPhrases.length)];
+            
+            // Make "Yes" button grow every time she tries to hit "No"
+            let currentScale = yesBtn.style.transform.replace('scale(', '').replace(')', '') || 1;
+            yesBtn.style.transform = `scale(${parseFloat(currentScale) + 0.15})`;
         }
 
         noBtn.addEventListener('mouseover', moveNo);
         noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
 
-        yesBtn.addEventListener('click', () => {
-            if (phase === 0) {
-                qTitle.innerText = "Do you love me more than anyone?";
-                qDesc.innerText = "Think carefully, my Tuntuni Pakhi! 😉";
-                phase++;
-                // Reset No button position for a second
-                noBtn.style.position = 'relative';
-                noBtn.style.left = '0';
-                noBtn.style.top = '0';
-                noBtn.innerText = "No";
-            } else {
-                s2.classList.add('hidden');
-                s3.classList.remove('hidden');
-                s3.classList.add('fade-in');
-            }
-        });
+        function celebrate() {
+            nextStage(3);
+            // Extra confetti logic could go here
+        }
     </script>
 </body>
 </html>
