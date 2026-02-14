@@ -3,247 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Sadia Khatun | Tuntuni Pakhi</title>
+    <title>For My Sadia Khatun ❤️</title>
     
-    <!-- Professional Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <!-- Link to your Style CSS -->
+    <link rel="stylesheet" href="style.css">
     
-    <!-- Confetti Library -->
+    <!-- Premium Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Confetti Library for the BIG YES -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <style>
-        :root {
-            --primary-pink: #ff4d6d;
-            --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #fecdd3 100%);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg-gradient);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #444;
-        }
-
-        /* Floating Hearts Background */
-        .heart-float {
-            position: absolute;
-            color: var(--primary-pink);
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: 1;
-            animation: floatUp 6s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
-
-        /* Main Card */
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 20px;
-            border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(255, 77, 109, 0.2);
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            border: 2px solid #fff;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: var(--primary-pink);
-            margin-bottom: 10px;
-        }
-
-        .nickname {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #d63384;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        /* The Bird SVG (This will ALWAYS show, no errors) */
-        .bird-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            animation: wiggle 2s ease-in-out infinite;
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
-
-        .message {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            min-height: 120px;
-            position: relative;
-        }
-
-        .btn {
-            padding: 16px 40px;
-            border: none;
-            border-radius: 100px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .btn-yes {
-            background: var(--primary-pink);
-            color: white;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
-            z-index: 100;
-        }
-
-        .btn-no {
-            background: #f1f5f9;
-            color: #94a3b8;
-            position: relative;
-        }
-
-        .hidden { display: none; }
-
-        #step3 h2 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary-pink); }
-    </style>
 </head>
 <body>
 
-    <div id="hearts-bg"></div>
-
-    <!-- STEP 1 -->
-    <div id="step1" class="container">
-        <!-- SVG Bird (Safe and Bulletproof) -->
-        <div class="bird-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#FFCCD5"/><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#FF4D6D"/><path d="M11 11H13M11 13H13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    <!-- The Advanced Glassmorphism Card -->
+    <div class="glass-card" id="main-card">
+        
+        <!-- The Pulsing Image Frame -->
+        <div class="image-wrap">
+            <!-- Starting with your first Bird GIF -->
+            <img id="display-gif" src="assets/1.gif" alt="For Sadia">
         </div>
-        <h1>Sadia Khatun</h1>
-        <span class="nickname">My Tuntuni Pakhi 🐦</span>
-        <p class="message">You make my world fly higher. I have a secret to tell you... want to hear it?</p>
-        <button class="btn btn-yes" onclick="showStep(2)">Yes, tell me! ❤️</button>
+
+        <!-- The Romantic Text Area -->
+        <div class="content">
+            <h1 id="main-title">Hi Sadia!</h1>
+            <p id="main-description">
+                My beautiful <span>Tuntuni Pakhi</span>, I have built a secret world for us. 
+                Are you ready to enter?
+            </p>
+        </div>
+
+        <!-- The Interactive Buttons -->
+        <div class="button-box" id="btn-group">
+            <button id="yesBtn" class="btn btn-yes" onclick="handleYes()">Open It ❤️</button>
+            <button id="noBtn" class="btn btn-no" onclick="handleNo()">No 😜</button>
+        </div>
+        
     </div>
 
-    <!-- STEP 2 -->
-    <div id="step2" class="container hidden">
-        <h1>Sadia...</h1>
-        <p class="message" id="questionText">Will you be my Valentine forever and always?</p>
-        <div class="btn-group" id="btnGroup">
-            <button id="yesBtn" class="btn btn-yes" onclick="celebrate()">Yes, Forever! 💍</button>
-            <button id="noBtn" class="btn btn-no">No 😜</button>
-        </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div id="step3" class="container hidden">
-        <h2>I Love You, Bird!</h2>
-        <div class="bird-icon" style="animation: wiggle 0.5s infinite;">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#FFCCD5"/><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#FF4D6D"/></svg>
-        </div>
-        <p class="message">You are the most beautiful person in my life. Every beat of my heart is for you. Happy Valentine's Day, my Tuntuni Pakhi!</p>
-        <p style="font-weight: 600; color: var(--primary-pink);">Forever Yours.</p>
-    </div>
-
-    <script>
-        // 1. Create Floating Hearts
-        const heartsContainer = document.getElementById('hearts-bg');
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart-float';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heartsContainer.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
-        }
-        setInterval(createFloatingHeart, 400);
-
-        // 2. Navigation
-        function showStep(step) {
-            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
-            document.getElementById('step' + step).classList.remove('hidden');
-        }
-
-        // 3. The Escape Logic for "No" Button
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const qText = document.getElementById('questionText');
-        let noClicks = 0;
-
-        function moveNo() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            
-            noClicks++;
-            if(noClicks > 2) {
-                let currentScale = parseFloat(yesBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
-                yesBtn.style.transform = `scale(${currentScale + 0.2})`;
-                qText.innerText = "You can't escape my love, Sadia! Click YES! 😉";
-            }
-        }
-
-        noBtn.addEventListener('mouseover', moveNo);
-        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
-
-        // 4. Celebration Logic
-        function celebrate() {
-            showStep(3);
-            
-            // Professional Confetti Explosion
-            var end = Date.now() + (5 * 1000);
-            var colors = ['#ff4d6d', '#ffffff', '#ffccd5'];
-
-            (function frame() {
-                confetti({
-                    particleCount: 4,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: colors
-                });
-                confetti({
-                    particleCount: 4,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: colors
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
-        }
-    </script>
+    <!-- Link to your Logic Script -->
+    <script src="script.js"></script>
 </body>
 </html>
