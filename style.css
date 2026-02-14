@@ -1,0 +1,103 @@
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ffccd5;
+    --glass: rgba(255, 255, 255, 0.2);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary);
+    font-size: 2.8rem;
+    margin: 10px 0;
+}
+
+p { color: #444; line-height: 1.6; }
+p span { font-weight: bold; color: var(--primary); }
+
+.image-wrap {
+    width: 150px; height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.image-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-btn {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+}
+
+.alt-btn {
+    background: #fff;
+    color: #888;
+}
+
+.button-box {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    height: 50px;
+    position: relative;
+}
+
+.hidden { display: none; }
+
+.signature {
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Falling Petals */
+.petal {
+    position: absolute;
+    top: -10%;
+    background: var(--primary);
+    border-radius: 0 50% 0 50%;
+    opacity: 0.6;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
