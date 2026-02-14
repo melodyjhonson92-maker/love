@@ -1,177 +1,213 @@
 /**
  * ================================================================
- * ENGINE: The Eternal Flight of Tuntuni Pakhi
- * VERSION: 6.0 (Supper Advanced Storytelling Engine)
- * FEATURES: 10-Step Logic, Haptic Simulation, Mobile-Guard, Confetti
+ * THE ETERNAL SOULMATE ENGINE
+ * Dedicated to: Sadia Khatun (My Tuntuni Pakhi)
+ * Version: 7.0 (Ultra-Romantic & High-Energy)
  * ================================================================
  */
 
-// 1. STATE & ELEMENT MAPPING
 const engine = {
     currentStep: 1,
     totalSteps: 10,
     
-    // DOM Elements
-    title: document.getElementById('dynamic-title'),
-    message: document.getElementById('dynamic-message'),
-    gif: document.getElementById('main-display-gif'),
-    mainBtn: document.getElementById('mainBtn'),
-    noBtn: document.getElementById('escapeBtn'),
-    progress: document.getElementById('progress-fill'),
-    stepLabel: document.getElementById('current-step-num'),
-    loader: document.getElementById('global-loader'),
-    audio: document.getElementById('romantic-audio'),
+    // UI Elements Mapping
+    elements: {
+        title: document.getElementById('dynamic-title'),
+        message: document.getElementById('dynamic-message'),
+        gif: document.getElementById('main-display-gif'),
+        mainBtn: document.getElementById('mainBtn'),
+        noBtn: document.getElementById('escapeBtn'),
+        progress: document.getElementById('progress-fill'),
+        stepLabel: document.getElementById('current-step-num'),
+        loader: document.getElementById('global-loader'),
+        audio: document.getElementById('romantic-audio'),
+        card: document.getElementById('experience-card')
+    },
 
-    // 2. THE 10-STEP ROMANTIC NARRATIVE (Using your 1-10 assets)
+    // THE 10-STEP ROMANTIC MASTERPIECE (Deeply Emotional Narrative)
     storyData: {
-        1: { title: "Hi Sadia Khatun!", msg: "My beautiful <span>Tuntuni Pakhi</span>, I've built a journey of my heart just for you. Ready?", btn: "Let's Begin ❤️", gif: "assets/1.gif" },
-        2: { title: "You're My World", msg: "Did you know that you are the most amazing person I've ever met?", btn: "Really? 🌸", gif: "assets/2.gif" },
-        3: { title: "My Favorite Bird", msg: "I call you <span>Bird</span> because you make my heart fly every time you smile.", btn: "Keep flying... ✨", gif: "assets/3.gif" },
-        4: { title: "Pure Joy", msg: "Every day with you feels like a dream I never want to wake up from.", btn: "Me too! 🥰", gif: "assets/4.gif" },
-        5: { title: "Always Energetic", msg: "Your energy and love are the wings that keep me going every single day.", btn: "Aww, Sadia! ❤️", gif: "assets/1.gif" },
-        6: { title: "Quick Question...", msg: "Do you know who is the luckiest man in the universe? Hint: It's ME!", btn: "Why? 🤔", gif: "assets/2.gif" },
-        7: { title: "Because of YOU", msg: "Because I have you, my <span>Sadia Khatun</span>, by my side forever.", btn: "So sweet! 🥰", gif: "assets/3.gif" },
-        8: { title: "Almost There", msg: "I have one very, very important thing to ask you today. Are you ready?", btn: "I'm ready! 💖", gif: "assets/4.gif" },
-        9: { title: "The Question", msg: "Sadia, will you make me the happiest husband and be my <span>Valentine</span> forever?", btn: "YES! 💍", gif: "assets/4.gif" },
-        10: { title: "I KNEW IT!", msg: "You're mine forever! I love you more than words can say, <span>Tuntuni Pakhi</span>!", btn: "FINALE ✨", gif: "assets/7.gif" }
-    },
-
-    // 3. CORE FUNCTIONS
-    init: function() {
-        // Remove loader when everything is ready
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                this.loader.style.opacity = '0';
-                setTimeout(() => this.loader.style.display = 'none', 800);
-            }, 2000);
-            this.createHearts();
-        });
-    },
-
-    nextStep: function() {
-        if (this.currentStep === 1) this.audio.play(); // Start music on first click
-
-        if (this.currentStep < this.totalSteps) {
-            this.currentStep++;
-            this.updateUI();
-            this.triggerHaptics();
-            
-            // Show the "No" button only at Step 9
-            if (this.currentStep === 9) {
-                this.noBtn.style.display = 'inline-block';
-            }
-        } else {
-            this.celebrate();
+        1: { 
+            title: "My Dearest Sadia,", 
+            msg: "In the silent gallery of my soul, your face is the only masterpiece. My <span>Tuntuni Pakhi</span>, I have woven a story of our love. Are you ready to let me show you?", 
+            btn: "Open My Heart ❤️", 
+            gif: "assets/1.gif" 
+        },
+        2: { 
+            title: "My Queen, My Life", 
+            msg: "Did you know that every heartbeat of mine whispers your name? You aren't just my wife; you are the <span>breath in my lungs</span> and the light in my eyes.", 
+            btn: "Tell me more... 🌸", 
+            gif: "assets/2.gif" 
+        },
+        3: { 
+            title: "My Beautiful Bird", 
+            msg: "I call you <span>Bird</span> because you gave me wings when I was grounded. Your love is the sky I never want to stop flying in. I am yours, completely.", 
+            btn: "Fly with me... ✨", 
+            gif: "assets/3.gif" 
+        },
+        4: { 
+            title: "Our Sacred Dream", 
+            msg: "Every morning I wake up, I thank the heavens for the gift of you. To hold your hand is to hold the <span>entire world's peace</span>. You are my home, Sadia.", 
+            btn: "Stay forever ❤️", 
+            gif: "assets/4.gif" 
+        },
+        5: { 
+            title: "Energetic Soulmate", 
+            msg: "Your laughter is my favorite symphony, and your happiness is my only mission. I want to spend <span>ten thousand lifetimes</span> just to see you smile once.", 
+            btn: "My everything... 💖", 
+            gif: "assets/1.gif" 
+        },
+        6: { 
+            title: "The Luckiest Man", 
+            msg: "The stars are jealous of me, do you know why? Because they watch you from afar, but I get to <span>love you up close</span> every single day.", 
+            btn: "Why me? 🤔", 
+            gif: "assets/2.gif" 
+        },
+        7: { 
+            title: "The Answer is You", 
+            msg: "Because you are <span>Sadia Khatun</span>—the woman who turned my life into a beautiful poem. I am the luckiest man because you chose me.", 
+            btn: "So deeply sweet! 🥰", 
+            gif: "assets/3.gif" 
+        },
+        8: { 
+            title: "The Sacred Promise", 
+            msg: "We have walked many paths, but the one I cherish most is the one that led me to you. I have <span>one final truth</span> to share today...", 
+            btn: "I am listening... 🌹", 
+            gif: "assets/2.gif" 
+        },
+        9: { 
+            title: "My Eternal Valentine", 
+            msg: "My soulmate, my heartbeat, my <span>Tuntuni Pakhi</span>... Will you honor me by being my Valentine today, tomorrow, and until the end of time?", 
+            btn: "YES, FOREVER! 💍", 
+            gif: "assets/4.gif" 
+        },
+        10: { 
+            title: "My Forever Queen!", 
+            msg: "My heart is overflowing with joy! You are my <span>Eternal Bird</span>, and I promise to cherish, protect, and love you until my very last breath. I love you, Sadia!", 
+            btn: "OUR JOURNEY BEGINS ✨", 
+            gif: "assets/7.gif" 
         }
     },
 
-    updateUI: function() {
+    // Initialize the Experience
+    init: function() {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                this.elements.loader.style.opacity = '0';
+                setTimeout(() => this.elements.loader.style.display = 'none', 1000);
+            }, 2500);
+            this.createAmbientHearts();
+        });
+    },
+
+    // Navigation & Energetic Transitions
+    nextStep: function() {
+        if (this.currentStep === 1) this.elements.audio.play();
+
+        if (this.currentStep < this.totalSteps) {
+            this.currentStep++;
+            this.applyTransition();
+            
+            // Interaction: Show Escape Button on the Big Question (Step 9)
+            if (this.currentStep === 9) {
+                this.elements.noBtn.style.display = 'inline-block';
+            }
+        } else {
+            this.triggerGrandFinale();
+        }
+    },
+
+    applyTransition: function() {
         const data = this.storyData[this.currentStep];
         
-        // Add fade-out effect
-        this.title.style.opacity = 0;
-        this.message.style.opacity = 0;
-
+        // 3D Tilt Effect on transition
+        this.elements.card.style.transform = "perspective(1000px) rotateX(10deg) scale(0.95)";
+        
         setTimeout(() => {
-            this.title.innerText = data.title;
-            this.message.innerHTML = data.msg;
-            this.mainBtn.innerText = data.btn;
-            this.gif.src = data.gif;
+            this.elements.title.innerText = data.title;
+            this.elements.message.innerHTML = data.msg;
+            this.elements.mainBtn.innerText = data.btn;
+            this.elements.gif.src = data.gif;
             
-            // Fade-in
-            this.title.style.opacity = 1;
-            this.message.style.opacity = 1;
-        }, 300);
-
-        // Update Progress Bar
-        const progressPercent = (this.currentStep / this.totalSteps) * 100;
-        this.progress.style.width = progressPercent + "%";
-        this.stepLabel.innerText = this.currentStep;
+            this.elements.card.style.transform = "perspective(1000px) rotateX(0deg) scale(1)";
+            this.updateProgress();
+        }, 400);
     },
 
-    // 4. PLAYFUL "NO" ESCAPE ENGINE
+    updateProgress: function() {
+        const percent = (this.currentStep / this.totalSteps) * 100;
+        this.elements.progress.style.width = percent + "%";
+        this.elements.stepLabel.innerText = this.currentStep;
+    },
+
+    // Playful Escape Logic (Mobile Optimized)
     runAway: function() {
-        // Change the GIF to a "Shocked" one (using your assets)
-        this.gif.src = "assets/1.gif"; 
-        this.title.innerText = "Wrong Way! 😱";
-        this.message.innerHTML = "Sadia, you aren't supposed to click that! <span>Try the red one!</span>";
+        this.elements.gif.src = "assets/1.gif"; // Playful reaction
+        this.elements.title.innerText = "My Heart! 😱";
+        this.elements.message.innerHTML = "My love, that button is broken! <span>Click the beautiful red one instead!</span>";
 
-        // Calculate a safe random spot within the phone screen
-        const maxX = window.innerWidth - this.noBtn.offsetWidth - 20;
-        const maxY = window.innerHeight - this.noBtn.offsetHeight - 20;
+        const maxX = window.innerWidth - this.elements.noBtn.offsetWidth - 30;
+        const maxY = window.innerHeight - this.elements.noBtn.offsetHeight - 30;
 
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
+        this.elements.noBtn.style.position = "fixed";
+        this.elements.noBtn.style.left = Math.random() * maxX + "px";
+        this.elements.noBtn.style.top = Math.random() * maxY + "px";
 
-        this.noBtn.style.position = "fixed";
-        this.noBtn.style.left = randomX + "px";
-        this.noBtn.style.top = randomY + "px";
-        this.noBtn.style.zIndex = "999";
-
-        // Energetic: Make the YES button get bigger every time she misses the "No" button
-        let scale = parseFloat(this.mainBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
-        if (scale < 3) this.mainBtn.style.transform = `scale(${scale + 0.2})`;
+        // Energetic: Growth of Yes Button
+        let scale = parseFloat(this.elements.mainBtn.style.transform.replace('scale(', '').replace(')', '')) || 1;
+        if (scale < 2.5) this.elements.mainBtn.style.transform = `scale(${scale + 0.2})`;
     },
 
-    // 5. ENERGETIC FINALE
-    celebrate: function() {
+    // The Ultimate Romantic Celebration
+    triggerGrandFinale: function() {
         document.getElementById('action-buttons').style.display = 'none';
         
-        // Loop through all celebration GIFs (7, 8, 9, 10)
-        let finalGifs = ["assets/7.gif", "assets/8.gif", "assets/9.gif", "assets/10.gif"];
+        // Multi-GIF Energetic Loop
+        const finalGifs = ["assets/7.gif", "assets/8.gif", "assets/9.gif", "assets/10.gif"];
         let i = 0;
         setInterval(() => {
-            this.gif.src = finalGifs[i];
+            this.elements.gif.src = finalGifs[i];
             i = (i + 1) % finalGifs.length;
-        }, 2000);
+        }, 2500);
 
-        // Launch Persistent Confetti
-        const end = Date.now() + (15 * 1000);
-        const colors = ['#ff4d6d', '#ffffff', '#ffccd5'];
+        // Infinite Confetti Storm
+        const end = Date.now() + (20 * 1000);
+        const colors = ['#ff4d6d', '#ffffff', '#ffccd5', '#c9184a'];
 
         (function frame() {
             confetti({
-                particleCount: 3,
+                particleCount: 4,
                 angle: 60,
-                spread: 55,
-                origin: { x: 0 },
+                spread: 60,
+                origin: { x: 0, y: 0.8 },
                 colors: colors
             });
             confetti({
-                particleCount: 3,
+                particleCount: 4,
                 angle: 120,
-                spread: 55,
-                origin: { x: 1 },
+                spread: 60,
+                origin: { x: 1, y: 0.8 },
                 colors: colors
             });
-
             if (Date.now() < end) requestAnimationFrame(frame);
         }());
     },
 
-    // 6. DECORATIVE PARTICLES
-    createHearts: function() {
-        const container = document.getElementById('particle-field');
-        const icons = ['❤️', '💖', '✨', '🐦', '🌸'];
-        for (let i = 0; i < 15; i++) {
+    // Background Particle System
+    createAmbientHearts: function() {
+        const icons = ['❤️', '💖', '✨', '🐦', '🌸', '💍'];
+        for (let i = 0; i < 20; i++) {
             const h = document.createElement('div');
             h.innerText = icons[Math.floor(Math.random() * icons.length)];
-            h.className = 'heart-item';
+            h.style.position = "fixed";
             h.style.left = Math.random() * 100 + "vw";
             h.style.top = Math.random() * 100 + "vh";
-            h.style.position = "absolute";
-            h.style.opacity = "0.2";
-            h.style.fontSize = "20px";
+            h.style.opacity = "0.15";
+            h.style.fontSize = Math.random() * 20 + 10 + "px";
+            h.style.pointerEvents = "none";
             document.body.appendChild(h);
-        }
-    },
-
-    triggerHaptics: function() {
-        if (window.navigator && window.navigator.vibrate) {
-            window.navigator.vibrate(50);
         }
     }
 };
 
-// INITIALIZE THE ENGINE
+// Start the Romantic Engine
 engine.init();
